@@ -13,6 +13,10 @@ export const getUserInfo = (): IUserInfo | null => {
   return store.get('userInfo') || null;
 };
 
+export const setUserInfo = (data: IUserInfo | null) => {
+  store.set('userInfo', data);
+};
+
 export const getUserId = () => {
   return getUserInfo()?.id || null;
 };

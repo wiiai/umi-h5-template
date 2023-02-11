@@ -1,32 +1,29 @@
 import React, { createContext, useContext } from 'react';
-import { UserInfoStore } from './userInfo.store';
+import { UserStore } from './user.store';
 
 class RootStore {
-  userInfoStore: UserInfoStore;
+  userStore: UserStore;
+  isFinished: boolean;
+
   constructor() {
-    this.userInfoStore = new UserInfoStore(this);
+    this.isFinished = false;
+    this.userStore = new UserStore(this);
   }
 }
 
 const rootStore = new RootStore();
-const RootStoreContext = createContext<RootStore>(rootStore)
+const RootStoreContext = createContext<RootStore>(rootStore);
 
-const RootStoreProvider = ({ children }: any) => {
+const RootStoreProvider: React.FC = ({ children }) => {
   return (
     <RootStoreContext.Provider value={rootStore}>
       {children}
     </RootStoreContext.Provider>
-  )
-}
+  );
+};
 
 const useStore = () => {
-  return useContext(RootStoreContext)
-}
-
-export {
-  RootStore,
-  UserInfoStore,
-  RootStoreProvider,
-  rootStore,
-  useStore,
+  return useContext(RootStoreContext);
 };
+
+export { RootStore, UserStore, RootStoreProvider, rootStore, useStore };

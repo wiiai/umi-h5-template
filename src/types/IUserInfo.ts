@@ -5,4 +5,5 @@ export interface IUserInfo {
   city: string;
   nickname: string;
   avatar: string;
+  token?: string;
 }

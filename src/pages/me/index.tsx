@@ -2,9 +2,9 @@ import { observer } from 'mobx-react';
 import { useStore } from '@/model';
 
 const IndexPage = () => {
-  const { userInfoStore } = useStore();
+  const { userStore } = useStore();
 
-  if (userInfoStore.loading) {
+  if (userStore.loading) {
     return <div>Loading</div>;
   }
 

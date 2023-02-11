@@ -1,9 +1,10 @@
-import { getUserInfo, logout } from '@/service/account';
+import { getUserInfo, login, logout } from '@/service/account';
 import { IUserInfo } from '@/types/IUserInfo';
+import { setToken, setUserInfo } from '@/utils/common/auth';
 import { observable, makeObservable, runInAction, action } from 'mobx';
 import { RootStore } from '.';
 
-export class UserInfoStore {
+export class UserStore {
   constructor(root: RootStore) {
     makeObservable(this, {
       loading: observable,
@@ -14,14 +15,27 @@ export class UserInfoStore {
   }
 
   loading = false;
+  isLogin = false;
   userInfo: IUserInfo | null = null;
+
+  async login(parma: Parameters<typeof login>[0]) {
+    this.loading = true;
+    let res = await login(parma);
+    runInAction(() => {
+      this.userInfo = res.data;
+      this.loading = false;
+      this.isLogin = true;
+      setToken(res.data.token!);
+      setUserInfo(res.data);
+    });
+  }
 
   async getUserInfo() {
     this.loading = true;
     let res = await getUserInfo();
     runInAction(() => {
       this.userInfo = res.data;
-      this.loading = false;
+      this.loading = Boolean(res.data);
     });
   }
 
@@ -31,6 +45,6 @@ export class UserInfoStore {
     runInAction(() => {
       this.loading = false;
       this.userInfo = null;
-    })
+    });
   }
 }

@@ -1,3 +1,5 @@
+import { useStore } from '@/model';
+import { useEffect, useState } from 'react';
 import { IRouteComponentProps } from 'umi';
 
 export default function Layout({
@@ -11,5 +13,30 @@ export default function Layout({
   route;
   history;
   match;
-  return children;
+
+  const { userStore } = useStore();
+  const [loading, setLoading] = useState(true);
+
+  console.log(`current path: ${history.location.pathname}`);
+
+  useEffect(() => {
+    if (history.location.pathname.indexOf('/login') === 0) {
+      setLoading(false);
+    } else {
+      if (userStore.isLogin) {
+        setLoading(false);
+      } else {
+        userStore.getUserInfo().then(() => {
+          if (userStore.isLogin) {
+            setLoading(false);
+          } else {
+            history.push('/login');
+            setLoading(false);
+          }
+        });
+      }
+    }
+  }, []);
+
+  return loading ? <div>LOADING...</div> : children;
 }

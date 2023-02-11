@@ -18,7 +18,10 @@ export const _instance = axios.create({
 _instance.interceptors.request.use(
   function (config: InternalAxiosRequestConfig) {
     const headers = new AxiosHeaders(config.headers);
-    headers.set('token', getToken());
+    if (getToken()) {
+      headers.set('token', getToken());
+    }
+
     return {
       ...config,
       url: `${host}${config.url}`,
@@ -42,9 +45,6 @@ _instance.interceptors.response.use(
     return res;
   },
   (error) => {
-    if (error.message.includes('401')) {
-      window.location.href = '/login';
-    }
     return Promise.reject(error);
   },
 );

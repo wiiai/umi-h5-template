@@ -3,19 +3,19 @@ import { observer } from 'mobx-react';
 import { useStore } from '@/model';
 
 const IndexPage = () => {
-  const { userInfoStore } = useStore();
+  const { userStore } = useStore();
 
-  if (userInfoStore.loading) {
+  if (userStore.loading) {
     return <div>Loading</div>;
   }
 
   return (
     <div className="home-page">
       <div>Home</div>
-      <div>{userInfoStore.userInfo?.name}</div>
-      <div>{userInfoStore.userInfo?.user_id}</div>
-      <button onClick={() => userInfoStore.getUserInfo()}>getUserInfo</button>
-      <button onClick={() => userInfoStore.logout()}>logout</button>
+      <div>{userStore.userInfo?.nickname}</div>
+      <div>{userStore.userInfo?.id}</div>
+      <button onClick={() => userStore.getUserInfo()}>getUserInfo</button>
+      <button onClick={() => userStore.logout()}>logout</button>
     </div>
   );
 };
