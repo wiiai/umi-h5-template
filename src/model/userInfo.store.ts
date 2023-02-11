@@ -1,32 +1,7 @@
+import { getUserInfo, logout } from '@/service/account';
+import { IUserInfo } from '@/types/IUserInfo';
 import { observable, makeObservable, runInAction, action } from 'mobx';
 import { RootStore } from '.';
-
-const getUserInfo = (): Promise<{
-  name: string;
-  user_id: number;
-}> => {
-  return new Promise((resolve) => {
-    setTimeout(
-      () =>
-        resolve({
-          name: 'tony',
-          user_id: 1,
-        }),
-      1000,
-    );
-  });
-};
-
-const logout = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(null), 1000);
-  });
-};
-
-export interface UserInfo {
-  name: string;
-  user_id: number;
-}
 
 export class UserInfoStore {
   constructor(root: RootStore) {
@@ -39,13 +14,13 @@ export class UserInfoStore {
   }
 
   loading = false;
-  userInfo: UserInfo | null = null;
+  userInfo: IUserInfo | null = null;
 
   async getUserInfo() {
     this.loading = true;
-    let data = await getUserInfo();
+    let res = await getUserInfo();
     runInAction(() => {
-      this.userInfo = data;
+      this.userInfo = res.data;
       this.loading = false;
     });
   }

@@ -1,33 +1,38 @@
-import { getToken } from "@/utils/common/auth";
-import axios from "axios";
-import Url from "url-parse";
+import { getToken } from '@/utils/common/auth';
+import axios, {
+  AxiosHeaders,
+  AxiosRequestConfig,
+  InternalAxiosRequestConfig,
+} from 'axios';
+// import Url from 'url-parse';
 
-export const isProd = process.env.NODE_ENV === "production";
-export const host = isProd ? 'https://wow-im.airtlab.com' :  "http://localhost:3010";
+export const isProd = process.env.NODE_ENV === 'production';
+export const host = isProd
+  ? 'https://wow-im.airtlab.com'
+  : 'http://localhost:3000';
 
-export const instance = axios.create({
-  timeout: 20 * 1000
+export const _instance = axios.create({
+  timeout: 20 * 1000,
 });
 
-instance.interceptors.request.use(
-  function(config) {
+_instance.interceptors.request.use(
+  function (config: InternalAxiosRequestConfig) {
+    const headers = new AxiosHeaders(config.headers);
+    headers.set('token', getToken());
     return {
       ...config,
       url: `${host}${config.url}`,
       method: 'POST',
-      headers: {
-        ...(config.headers || {}),
-        token: getToken()
-      }
+      headers,
     };
   },
-  function(error) {
+  function (error) {
     return Promise.reject(error);
-  }
+  },
 );
 
-instance.interceptors.response.use(
-  response => {
+_instance.interceptors.response.use(
+  (response) => {
     const res = response.data;
     if (+res.errCode === 0) {
       res.success = true;
@@ -36,13 +41,14 @@ instance.interceptors.response.use(
     }
     return res;
   },
-  error => {
-    console.log(error)
+  (error) => {
     if (error.message.includes('401')) {
-      window.location.href = '/login'
+      window.location.href = '/login';
     }
     return Promise.reject(error);
-  }
+  },
 );
 
-export const request = instance;
+export const request = <T>(options: AxiosRequestConfig) => {
+  return _instance(options) as Promise<T>;
+};

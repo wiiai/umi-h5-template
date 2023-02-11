@@ -22,6 +22,7 @@
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
     "@types/store": "^2.0.2",
+    "@types/url-parse": "^1.4.8",
     "axios": "^1.3.2",
     "mobx": "^6.8.0",
     "mobx-react": "^7.6.0",
