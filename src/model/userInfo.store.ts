@@ -1,4 +1,4 @@
-import { observable, makeObservable, flow, runInAction, action } from 'mobx';
+import { observable, makeObservable, runInAction, action } from 'mobx';
 import { RootStore } from '.';
 
 const getUserInfo = (): Promise<{
