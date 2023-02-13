@@ -16,7 +16,6 @@ export default function Layout({
 
   const { userStore } = useStore();
   const [loading, setLoading] = useState(true);
-
   console.log(`current path: ${history.location.pathname}`);
 
   useEffect(() => {
@@ -27,6 +26,7 @@ export default function Layout({
         setLoading(false);
       } else {
         userStore.getUserInfo().then(() => {
+          console.log(userStore.isLogin, 333);
           if (userStore.isLogin) {
             setLoading(false);
           } else {

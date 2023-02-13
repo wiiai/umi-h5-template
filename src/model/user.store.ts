@@ -35,7 +35,8 @@ export class UserStore {
     let res = await getUserInfo();
     runInAction(() => {
       this.userInfo = res.data;
-      this.loading = Boolean(res.data);
+      this.loading = false;
+      this.isLogin = Boolean(res.data);
     });
   }
 
