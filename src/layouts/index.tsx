@@ -1,3 +1,4 @@
+import { Loading } from '@/components/loading';
 import { useStore } from '@/model';
 import { useEffect, useState } from 'react';
 import { IRouteComponentProps } from 'umi';
@@ -38,5 +39,5 @@ export default function Layout({
     }
   }, []);
 
-  return loading ? <div>LOADING...</div> : children;
+  return loading ? <Loading /> : children;
 }

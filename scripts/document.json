@@ -1,0 +1,304 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/account/register": {
+      "post": {
+        "operationId": "AccountController_register",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RegisterDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["账户"]
+      }
+    },
+    "/account/login": {
+      "post": {
+        "operationId": "AccountController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LoginDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["账户"]
+      }
+    },
+    "/account/logout": {
+      "post": {
+        "operationId": "AccountController_logout",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "header",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "201": { "description": "" } },
+        "tags": ["账户"]
+      }
+    },
+    "/account/check_login": {
+      "post": {
+        "operationId": "AccountController_checkLogin",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "header",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "201": { "description": "" } },
+        "tags": ["账户"]
+      }
+    },
+    "/account/getUserInfo": {
+      "post": {
+        "operationId": "AccountController_getUserInfo",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "header",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "201": { "description": "" } },
+        "tags": ["账户"]
+      }
+    },
+    "/account/send_code": {
+      "post": {
+        "operationId": "AccountController_sendCode",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SendCodeDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["账户"]
+      }
+    },
+    "/account/update_userInfo": {
+      "post": {
+        "operationId": "AccountController_update",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "header",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateUserInfoDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["账户"]
+      }
+    },
+    "/account/init_password": {
+      "post": {
+        "operationId": "AccountController_initPassword",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "header",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/InitPasswordDto" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["账户"]
+      }
+    },
+    "/account/update_password": {
+      "post": {
+        "operationId": "AccountController_updatePassword",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "header",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdatePasswordDto" }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UpdatePwdRes" }
+              }
+            }
+          }
+        },
+        "tags": ["账户"]
+      }
+    },
+    "/comment/list": {
+      "get": {
+        "operationId": "CommentController_list",
+        "parameters": [],
+        "responses": { "200": { "description": "" } },
+        "tags": ["Comment"]
+      }
+    },
+    "/feed/create": {
+      "post": {
+        "operationId": "FeedController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateFeedDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["Feed"]
+      }
+    },
+    "/feed/queryList": {
+      "post": {
+        "operationId": "FeedController_queryList",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/QueryFeedDTO" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "" } },
+        "tags": ["Feed"]
+      }
+    },
+    "/upload": {
+      "post": {
+        "operationId": "UploadController_upload",
+        "parameters": [],
+        "responses": { "201": { "description": "" } }
+      }
+    },
+    "/ping/test": {
+      "get": {
+        "operationId": "PingController_test",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/ping/mongo": {
+      "get": {
+        "operationId": "PingController_getHello",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    },
+    "/ping/redirect": {
+      "get": {
+        "operationId": "PingController_redirect",
+        "parameters": [],
+        "responses": { "200": { "description": "" } }
+      }
+    }
+  },
+  "info": {
+    "title": "WOW OPEN API",
+    "description": "API dev template",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "RegisterDto": {
+        "type": "object",
+        "properties": {
+          "account": { "type": "string", "description": "账号" },
+          "password": { "type": "string", "description": "密码" },
+          "code": { "type": "string", "description": "验证码" },
+          "registerType": {
+            "type": "string",
+            "description": "账号类型",
+            "enum": ["account", "email", "mobile"]
+          }
+        },
+        "required": ["account", "registerType"]
+      },
+      "LoginDto": { "type": "object", "properties": {} },
+      "SendCodeDto": { "type": "object", "properties": {} },
+      "UpdateUserInfoDto": { "type": "object", "properties": {} },
+      "InitPasswordDto": { "type": "object", "properties": {} },
+      "UpdatePasswordDto": {
+        "type": "object",
+        "properties": {
+          "password": { "type": "string", "description": "旧密码" },
+          "newPassword": { "type": "string", "description": "新密码" }
+        },
+        "required": ["password", "newPassword"]
+      },
+      "UpdatePwdRes": {
+        "type": "object",
+        "properties": { "status": { "type": "boolean" } },
+        "required": ["status"]
+      },
+      "CreateFeedDTO": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "title": "标题" },
+          "content": { "type": "string", "title": "内容" },
+          "images": { "type": "string", "title": "图集" },
+          "category": { "type": "string", "title": "分类" }
+        },
+        "required": ["title", "content", "images", "category"]
+      },
+      "QueryFeedDTO": {
+        "type": "object",
+        "properties": {
+          "pageSize": { "type": "number", "title": "分页大小" },
+          "pageIndex": { "type": "number", "title": "分页索引(0表示第一页)" }
+        }
+      }
+    }
+  }
+}
