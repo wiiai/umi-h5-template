@@ -65,7 +65,7 @@ const LoginScreen: React.FC = () => {
           </Button>
         </Form.Item>
 
-        <Form.Item>
+        <Form.Item className="ui-mb-0">
           <Form.Item name="remember" valuePropName="checked" noStyle>
             <Checkbox>记住密码</Checkbox>
           </Form.Item>

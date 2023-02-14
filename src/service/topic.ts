@@ -6,6 +6,9 @@ import { request } from '@/utils/common/request';
 export interface IFeedItem {
   title: string;
   content: string;
+  author_name: string;
+  author_avatar: string;
+  id: number;
 }
 export const getTopicList = (params: {
   pageSize: number;

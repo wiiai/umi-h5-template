@@ -1,0 +1,213 @@
+// 常用 display 属性
+.ui-inline {
+  display: inline;
+}
+.ui-inline-block {
+  display: inline-block;
+}
+.ui-block {
+  display: block;
+}
+
+// flex 相关
+.ui-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ui-inline-flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ui-flex-auto {
+  flex: 1;
+}
+.ui-flex-jc-start {
+  justify-content: flex-start;
+}
+.ui-flex-jc-end {
+  justify-content: flex-end;
+}
+.ui-flex-ai-start {
+  align-items: flex-start;
+}
+.ui-flex-ai-end {
+  align-items: flex-end;
+}
+
+// 文本对其方式
+.ui-t-center {
+  text-align: center;
+}
+.ui-t-left {
+  text-align: left;
+}
+.ui-t-right {
+  text-align: right;
+}
+
+// 浮动
+.ui-fl {
+  float: left;
+}
+.ui-fr {
+  float: right;
+}
+.ui-clear::before {
+  content: ' ';
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+// 鼠标可点击
+.ui-pointer {
+  cursor: pointer;
+}
+
+// 主要的颜色
+each({
+    primary: #000;
+    second: #292e3e;
+    warn: #f37b1d;
+    error: #ee0a24;
+    success: #07c160;
+    gray: #969799;
+  }, {
+    .ui-color-@{key} {
+      color: @value;
+    }
+  })
+  
+  // 字体大小
+  each({
+    xs: 12px;
+    sm: 14px;
+    md: 16px;
+    l: 18px;
+    xl: 20px;
+  }, {
+    .ui-fs-@{key} {
+      font-size: @value;
+    }
+  })
+  
+  // 常用的边距 & 行高 & 字体大小
+  each({
+    xs: 5px;
+    sm: 10px;
+    md: 15px;
+    l: 20px;
+    xl: 25px;
+  }, {
+    .ui-m-@{key} {
+      margin: @value;
+    }
+    .ui-mt-@{key} {
+      margin-top: @value;
+    }
+    .ui-mr-@{key} {
+      margin-right: @value;
+    }
+    .ui-ml-@{key} {
+      margin-left: @value;
+    }
+    .ui-mb-@{key} {
+      margin-bottom: @value;
+    }
+    .ui-p-@{key} {
+      padding: @value;
+    }
+    .ui-pt-@{key} {
+      padding-top: @value;
+    }
+    .ui-pr-@{key} {
+      padding-right: @value;
+    }
+    .ui-pl-@{key} {
+      padding-left: @value;
+    }
+    .ui-pb-@{key} {
+      padding-bottom: @value;
+    }
+  });
+
+// 0-30 之间的偶数 边距 & 行高 & 字体大小 枚举
+each(range(0, 30, 2), {
+    .ui-m-@{value} {
+      margin: @value * 1px !important;
+    }
+    .ui-mb-@{value} {
+      margin-bottom: @value * 1px !important;
+    }
+    .ui-mt-@{value} {
+      margin-top: @value * 1px !important;
+    }
+    .ui-ml-@{value} {
+      margin-left: @value * 1px !important;
+    }
+    .ui-mr-@{value} {
+      margin-right: @value * 1px !important;
+    }
+    .ui-m-n@{value} {
+      margin: @value * -1px !important;
+    }
+    .ui-mb-n@{value} {
+      margin-bottom: @value * -1px !important;
+    }
+    .ui-mt-n@{value} {
+      margin-top: @value * -1px !important;
+    }
+    .ui-ml-n@{value} {
+      margin-left: @value * -1px !important;
+    }
+    .ui-mr-n@{value} {
+      margin-right: @value * -1px !important;
+    }
+    .ui-p-@{value} {
+      padding: @value * 1px !important;
+    }
+    .ui-pb-@{value} {
+      padding-bottom: @value * 1px !important;
+    }
+    .ui-pt-@{value} {
+      padding-top: @value * 1px !important;
+    }
+    .ui-pl-@{value} {
+      padding-left: @value * 1px !important;
+    }
+    .ui-pr-@{value} {
+      padding-right: @value * 1px !important;
+    }
+    .ui-lh-@{value} {
+      line-height: @value * 1px !important;
+    }
+    .ui-fs-@{value} {
+      font-size: @value * 1px !important;
+    }
+  });
+
+// 文字省略
+.ui-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ui-unselect {
+  user-select: none;
+}
+
+// 字体粗细
+.ui-font-bold {
+  font-weight: 600;
+}
+.ui-font-normal {
+  font-weight: 400;
+}
+
+// bg
+.ui-bg-white {
+  background-color: #fff;
+}
