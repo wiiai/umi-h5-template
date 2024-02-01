@@ -1,16 +1,2 @@
-# umi project
+# umi h5 开发模板
 umi template (v3)
-
-## Getting Started
-
-Install dependencies,
-
-```bash
-$ yarn
-```
-
-Start the dev server,
-
-```bash
-$ yarn start
-```
