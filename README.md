@@ -1,4 +1,4 @@
-## umi-h5-tpl
+## umi-h5-template
 
 umi h5 开发模板
 
@@ -11,7 +11,6 @@ umi + mobx
 ### UI 库
 
 antd-mobile
-
 
 ## Q & A
 
