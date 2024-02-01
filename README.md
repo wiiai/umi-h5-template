@@ -12,6 +12,10 @@ umi + mobx
 
 antd-mobile
 
+### pdf 预览
+
+pdfjs-dist
+
 ## Q & A
 
 node 18 版本 routines::unsupported
