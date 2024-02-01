@@ -39,5 +39,6 @@ export default function Layout({
     }
   }, []);
 
-  return loading ? <Loading /> : children;
+  return children;
+  // return loading ? <Loading /> : children;
 }

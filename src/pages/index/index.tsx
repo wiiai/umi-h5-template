@@ -23,4 +23,6 @@ const IndexPage = () => {
   );
 };
 
-export default observer(IndexPage);
+IndexPage.wrappers = ['@/wrappers/auth.wrapper'];
+
+export default IndexPage;

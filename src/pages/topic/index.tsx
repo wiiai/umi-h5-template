@@ -49,4 +49,6 @@ const TopicList = () => {
   );
 };
 
+TopicList.wrappers = ['@/wrappers/auth.wrapper'];
+
 export default TopicList;
